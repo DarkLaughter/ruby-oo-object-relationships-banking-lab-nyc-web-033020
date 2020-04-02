@@ -1,7 +1,7 @@
 class Transfer
 
   attr_reader :sender, :receiver, :status
-  attr_accessor :transfer_amount
+  attr_accessor :transfer_amount, :bank_account
 
   def initialize (sender, receiver, transfer_amount)
     @sender = sender 
@@ -15,7 +15,9 @@ class Transfer
   end
 
   def valid?
-    
+    BankAccount.all.each do |account|
+      account.status == "open"
+    end
   end
 
 end
