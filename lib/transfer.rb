@@ -19,8 +19,7 @@ class Transfer
   end
 
   def valid?
-    # Transfer.all == BankAccount.all
-    (Transfer.all == self) || (BankAccount.all == self)
+    self.status != "open"
   end
 
   def self.all
